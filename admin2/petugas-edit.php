@@ -7,19 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $id = $_GET['id'];
     $sql = "SELECT * FROM petugas WHERE id_petugas=?";
     $row = $koneksi->execute_query($sql, [$id])->fetch_assoc();
-    var_dump($row);
+    // var_dump($row);
 
     $nama = $row['nama_petugas'];
     $username = $row['username'];
     $password = $row['password'];
-    $telepon = $row['telp_petugas'];
+    $telepon = $row['telp'];
     $level = $row['level'];
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_GET['id'];
     $nama = $_POST['nama'];
     $telepon = $_POST['telepon'];
     $level = $_POST['level'];
-    $sql = "UPDATE petugas SET nama_petugas=?, telp_petugas=?, level=? WHERE id_petugas=?";
+    $sql = "UPDATE petugas SET nama_petugas=?, telp=?, level=? WHERE id_petugas=?";
     $row = $koneksi->execute_query($sql, [$nama, $telepon, $level, $id]);
 
 if ($row) {
